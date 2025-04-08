@@ -33,7 +33,7 @@
     <Using Include="Windows.UI.Xaml.Shapes" />
     <Using Include="Windows.UI.Text" />
   </ItemGroup>
-  <ItemGroup Condition="'$(IsWinAppSdk)' == 'true'">
+  <ItemGroup Condition="'$(IsWinAppSdk)' == 'true' or $(IsUno)' == 'true'">
     <Using Include="Microsoft.UI" />
     <Using Include="Microsoft.UI.Xaml.Documents" />
     <Using Include="Microsoft.UI.Xaml.Media.Imaging" />
