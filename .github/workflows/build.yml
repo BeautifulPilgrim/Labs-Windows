@@ -60,7 +60,8 @@ jobs:
     strategy:
       fail-fast: false # prevent one matrix pipeline from being cancelled if one fails, we want them all to run to completion.
       matrix:
-        winui: [2, 3]
+        # winui: [2, 3]
+        winui: [3]
         multitarget: ['uwp', 'wasdk', 'wasm', 'wpf', 'linuxgtk', 'macos', 'ios', 'android']
         exclude:
           # WinUI 2 not supported on wasdk
@@ -213,7 +214,8 @@ jobs:
     strategy:
       fail-fast: false # prevent one matrix pipeline from being cancelled if one fails, we want them all to run to completion.
       matrix:
-        winui: [0, 2, 3]
+        # winui: [0, 2, 3]
+        winui: [3]
 
     env:
       VERSION_PROPERTY: ${{ github.ref == 'refs/heads/main' && format('build.{0}', github.run_number) || format('pull-{0}.{1}', github.event.number, github.run_number) }}
@@ -266,20 +268,20 @@ jobs:
         run: powershell -version 5.1 -command "Get-ChildItem -Path '*.nupkg' | ForEach-Object { if (`$_.Name -notmatch '${{ env.VERSION_PROPERTY }}') { throw 'Nupkg name is missing trailing VERSION_PROPERTY' + `$_.Name } }" -ErrorAction Stop
 
       # Push Pull Request Packages to our DevOps Artifacts Feed (see nuget.config)
-      - name: Push Pull Request Packages (if not fork)
-        if: ${{ env.IS_PR == 'true' && github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]' }}
-        run: |
-          dotnet nuget add source https://pkgs.dev.azure.com/dotnet/CommunityToolkit/_packaging/CommunityToolkit-PullRequests/nuget/v3/index.json `
-            --name PullRequests `
-            --username dummy --password ${{ secrets.DEVOPS_PACKAGE_PUSH_TOKEN }}
-          dotnet nuget push "*.nupkg" --api-key dummy --source PullRequests --skip-duplicate
+      # - name: Push Pull Request Packages (if not fork)
+      #   if: ${{ env.IS_PR == 'true' && github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]' }}
+      #   run: |
+      #     dotnet nuget add source https://pkgs.dev.azure.com/dotnet/CommunityToolkit/_packaging/CommunityToolkit-PullRequests/nuget/v3/index.json `
+      #       --name PullRequests `
+      #       --username dummy --password ${{ secrets.DEVOPS_PACKAGE_PUSH_TOKEN }}
+      #     dotnet nuget push "*.nupkg" --api-key dummy --source PullRequests --skip-duplicate
           
-      - name: Push packages (main)
-        if: ${{ github.ref == 'refs/heads/main' }}
-        run: |
-          dotnet nuget update source LabsFeed `
-            --username dummy --password ${{ secrets.DEVOPS_PACKAGE_PUSH_TOKEN }}
-          dotnet nuget push "**/*.nupkg" --api-key dummy --source LabsFeed --skip-duplicate
+      # - name: Push packages (main)
+      #   if: ${{ github.ref == 'refs/heads/main' }}
+      #   run: |
+      #     dotnet nuget update source LabsFeed `
+      #       --username dummy --password ${{ secrets.DEVOPS_PACKAGE_PUSH_TOKEN }}
+      #     dotnet nuget push "**/*.nupkg" --api-key dummy --source LabsFeed --skip-duplicate
 
       # if we're not doing a PR build (or it's a PR from a fork) then we upload our packages so we can sign as a separate job or have available to test.
       - name: Upload Packages as Artifacts
