@@ -24,7 +24,7 @@ internal class MyCodeBlock : IAddChild
         _paragraph = new Paragraph();
         var container = new InlineUIContainer();
         var border = new Border();
-        border.Background = (Brush)Application.Current.Resources["ExpanderHeaderBackground"];
+        border.Background = (Brush)Microsoft.UI.Xaml.Application.Current.Resources["ExpanderHeaderBackground"];
         border.Padding = _config.Themes.Padding;
         border.Margin = _config.Themes.InternalMargin;
         border.CornerRadius = _config.Themes.CornerRadius;
@@ -81,11 +81,11 @@ internal class MyCodeBlock : IAddChild
             }
             richTextBlock.Blocks.Add(paragraph);
         }
-        
+
         border.Child = richTextBlock;
         container.Child = border;
         _paragraph.Inlines.Add(container);
     }
 
-    public void AddChild(IAddChild child) {}
+    public void AddChild(IAddChild child) { }
 }

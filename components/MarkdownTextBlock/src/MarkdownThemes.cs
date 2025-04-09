@@ -13,7 +13,7 @@ using FontWeights = Microsoft.UI.Text.FontWeights;
 
 namespace CommunityToolkit.WinUI.Controls.MarkdownTextBlockRns;
 
-public sealed class MarkdownThemes : DependencyObject
+public partial class MarkdownThemes : DependencyObject
 {
     internal static MarkdownThemes Default { get; } = new();
 
@@ -35,7 +35,7 @@ public sealed class MarkdownThemes : DependencyObject
 
     public double H6FontSize { get; set; } = 12;
 
-    public Brush HeadingForeground { get; set; } = Extensions.GetAccentColorBrush();
+    public Brush HeadingForeground { get; set; } = CommunityToolkit.Labs.WinUI.MarkdownTextBlock.Extensions.GetAccentColorBrush();
 
     public FontWeight H1FontWeight { get; set; } = FontWeights.Bold;
 
@@ -43,7 +43,7 @@ public sealed class MarkdownThemes : DependencyObject
 
     public FontWeight H3FontWeight { get; set; } = FontWeights.Normal;
 
-    public FontWeight H4FontWeight { get; set;} = FontWeights.Normal;
+    public FontWeight H4FontWeight { get; set; } = FontWeights.Normal;
 
     public FontWeight H5FontWeight { get; set; } = FontWeights.Normal;
 
@@ -58,16 +58,16 @@ public sealed class MarkdownThemes : DependencyObject
 
     public Brush BorderBrush { get; set; } = new SolidColorBrush(Colors.Gray);
 
-    public Brush TableHeadingBackground { get; set; } = Extensions.GetAccentColorBrush(Windows.UI.ViewManagement.UIColorType.AccentLight3);
+    public Brush TableHeadingBackground { get; set; } = CommunityToolkit.Labs.WinUI.MarkdownTextBlock.Extensions.GetAccentColorBrush(Windows.UI.ViewManagement.UIColorType.AccentLight3);
 
-    public Brush InlineCodeBackground { get; set; } = (Brush)Application.Current.Resources["ExpanderHeaderBackground"];
-    public Brush InlineCodeForeground { get; set; } = (Brush)Application.Current.Resources["TextFillColorPrimaryBrush"];
+    public Brush InlineCodeBackground { get; set; } = (Brush)Microsoft.UI.Xaml.Application.Current.Resources["ExpanderHeaderBackground"];
+    public Brush InlineCodeForeground { get; set; } = (Brush)Microsoft.UI.Xaml.Application.Current.Resources["TextFillColorPrimaryBrush"];
 
     public Brush InlineCodeBorderBrush { get; set; } = new SolidColorBrush(Colors.Gray);
 
-    public Thickness InlineCodeBorderThickness { get; set; } = new (1);
+    public Thickness InlineCodeBorderThickness { get; set; } = new(1);
 
-    public CornerRadius InlineCodeCornerRadius { get; set; } = new (2);
+    public CornerRadius InlineCodeCornerRadius { get; set; } = new(2);
 
     public Thickness InlineCodePadding { get; set; } = new(0);
 

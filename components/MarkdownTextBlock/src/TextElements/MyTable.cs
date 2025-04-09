@@ -22,7 +22,7 @@ internal class MyTable : IAddChild
     {
         _table = table;
         _paragraph = new Paragraph();
-        var row = table.FirstOrDefault() as TableRow;
+        var row = table.FirstOrDefault() as Markdig.Extensions.Tables.TableRow;
         var column = row == null ? 0 : row.Count;
 
         _tableElement = new MyTableUIElement
