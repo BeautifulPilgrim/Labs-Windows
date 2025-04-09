@@ -613,6 +613,8 @@ Source: https://www.reddit.com/r/reddit.com/comments/6ewgt/reddit_markdown_prime
 
     private void MarkdownTextBlock_OnLinkClicked(object? sender, LinkClickedEventArgs e)
     {
+#if Debug
         Debug.WriteLine($"Link Clicked: {e.Uri}");
+#endif
     }
 }
