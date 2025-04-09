@@ -44,7 +44,7 @@ internal class MyList : IAddChild
             }
         }
 
-        _stackPanel.Orientation = Orientation.Vertical;
+        _stackPanel.Orientation = Microsoft.UI.Xaml.Controls.Orientation.Vertical;
         _stackPanel.Margin = new Thickness(left: 0, top: 8, right: 0, bottom: 8);
         _container.Child = _stackPanel;
         _paragraph.Inlines.Add(_container);

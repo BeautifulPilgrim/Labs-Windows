@@ -21,7 +21,7 @@ public class TableRenderer : UWPObjectRenderer<Table>
         for (var rowIndex = 0; rowIndex < table.Count; rowIndex++)
         {
             var rowObj = table[rowIndex];
-            var row = (TableRow)rowObj;
+            var row = (Markdig.Extensions.Tables.TableRow)rowObj;
 
             for (var i = 0; i < row.Count; i++)
             {
