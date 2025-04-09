@@ -5,7 +5,11 @@
 using Markdig.Syntax;
 using RomanNumerals;
 using System.Globalization;
-
+#if !WINAPPSDK
+using Controls = Windows.UI.Xaml.Controls;
+#else
+using Controls = Microsoft.UI.Xaml.Controls;
+#endif
 namespace CommunityToolkit.Labs.WinUI.MarkdownTextBlock.TextElements;
 
 internal class MyList : IAddChild
@@ -44,7 +48,7 @@ internal class MyList : IAddChild
             }
         }
 
-        _stackPanel.Orientation = Microsoft.UI.Xaml.Controls.Orientation.Vertical;
+        _stackPanel.Orientation = Controls.Orientation.Vertical;
         _stackPanel.Margin = new Thickness(left: 0, top: 8, right: 0, bottom: 8);
         _container.Child = _stackPanel;
         _paragraph.Inlines.Add(_container);

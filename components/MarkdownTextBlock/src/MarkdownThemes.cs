@@ -4,9 +4,11 @@
 
 using CommunityToolkit.Labs.WinUI.MarkdownTextBlock;
 #if !WINAPPSDK
+using Application = Windows.UI.Xaml.Application;
 using FontWeight = Windows.UI.Text.FontWeight;
 using FontWeights = Windows.UI.Text.FontWeights;
 #else
+using Application = Microsoft.UI.Xaml.Application;
 using FontWeight = Windows.UI.Text.FontWeight;
 using FontWeights = Microsoft.UI.Text.FontWeights;
 #endif
@@ -60,8 +62,8 @@ public partial class MarkdownThemes : DependencyObject
 
     public Brush TableHeadingBackground { get; set; } = CommunityToolkit.Labs.WinUI.MarkdownTextBlock.Extensions.GetAccentColorBrush(Windows.UI.ViewManagement.UIColorType.AccentLight3);
 
-    public Brush InlineCodeBackground { get; set; } = (Brush)Microsoft.UI.Xaml.Application.Current.Resources["ExpanderHeaderBackground"];
-    public Brush InlineCodeForeground { get; set; } = (Brush)Microsoft.UI.Xaml.Application.Current.Resources["TextFillColorPrimaryBrush"];
+    public Brush InlineCodeBackground { get; set; } = (Brush)Application.Current.Resources["ExpanderHeaderBackground"];
+    public Brush InlineCodeForeground { get; set; } = (Brush)Application.Current.Resources["TextFillColorPrimaryBrush"];
 
     public Brush InlineCodeBorderBrush { get; set; } = new SolidColorBrush(Colors.Gray);
 

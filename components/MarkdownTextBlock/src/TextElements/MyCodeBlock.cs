@@ -3,7 +3,11 @@
 // See the LICENSE file in the project root for more information.
 
 using Markdig.Syntax;
-
+#if !WINAPPSDK
+using Application = Windows.UI.Xaml.Application;
+#else
+using Application = Microsoft.UI.Xaml.Application;
+#endif
 namespace CommunityToolkit.Labs.WinUI.MarkdownTextBlock.TextElements;
 
 internal class MyCodeBlock : IAddChild
@@ -24,7 +28,7 @@ internal class MyCodeBlock : IAddChild
         _paragraph = new Paragraph();
         var container = new InlineUIContainer();
         var border = new Border();
-        border.Background = (Brush)Microsoft.UI.Xaml.Application.Current.Resources["ExpanderHeaderBackground"];
+        border.Background = (Brush)Application.Current.Resources["ExpanderHeaderBackground"];
         border.Padding = _config.Themes.Padding;
         border.Margin = _config.Themes.InternalMargin;
         border.CornerRadius = _config.Themes.CornerRadius;

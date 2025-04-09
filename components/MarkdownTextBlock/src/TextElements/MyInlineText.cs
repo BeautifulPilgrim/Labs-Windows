@@ -3,7 +3,12 @@
 // See the LICENSE file in the project root for more information.
 
 namespace CommunityToolkit.Labs.WinUI.MarkdownTextBlock.TextElements;
+#if !WINAPPSDK
+using Windows.UI.Xaml.Documents;
 
+#else
+using Microsoft.UI.Xaml.Documents;
+#endif
 internal class MyInlineText : IAddChild
 {
     private Run _run;
@@ -21,5 +26,5 @@ internal class MyInlineText : IAddChild
         };
     }
 
-    public void AddChild(IAddChild child) {}
+    public void AddChild(IAddChild child) { }
 }

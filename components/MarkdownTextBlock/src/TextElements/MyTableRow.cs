@@ -3,7 +3,11 @@
 // See the LICENSE file in the project root for more information.
 using TableRow = Markdig.Extensions.Tables.TableRow;
 using Markdig.Extensions.Tables;
-
+#if !WINAPPSDK
+using Controls = Windows.UI.Xaml.Controls;
+#else
+using Controls = Microsoft.UI.Xaml.Controls;
+#endif
 namespace CommunityToolkit.Labs.WinUI.MarkdownTextBlock.TextElements;
 
 internal class MyTableRow : IAddChild
@@ -23,7 +27,7 @@ internal class MyTableRow : IAddChild
         _paragraph = new Paragraph();
 
         _stackPanel = new StackPanel();
-        _stackPanel.Orientation = Microsoft.UI.Xaml.Controls.Orientation.Horizontal;
+        _stackPanel.Orientation = Controls.Orientation.Horizontal;
         var inlineUIContainer = new InlineUIContainer();
         inlineUIContainer.Child = _stackPanel;
         _paragraph.Inlines.Add(inlineUIContainer);
