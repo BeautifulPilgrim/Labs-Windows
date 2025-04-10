@@ -25,7 +25,8 @@
     <PackageReference Include="Markdig" Version="0.38.0" />
     <PackageReference Include="Roman-Numerals" Version="2.0.1" />
   </ItemGroup>
-  <ItemGroup Condition="'$(IsUwp)' == 'true' Or ('$(WinUIMajorVersion)' == '2' And '$(IsUno)' == 'true')">
+  <!-- <ItemGroup Condition="'$(IsUwp)' == 'true' Or ('$(WinUIMajorVersion)' == '2' And '$(IsUno)' == 'true')"> -->
+  <ItemGroup Condition="'$(IsUwp)' == 'true'">
     <Using Include="Windows.UI" />
     <Using Include="Windows.UI.Xaml.Documents" />
     <Using Include="Windows.UI.Xaml.Media.Imaging" />
